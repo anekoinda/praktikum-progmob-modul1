@@ -17,20 +17,25 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static int m=0;
     Button button_daftar;
     EditText input_nik, input_nama, input_telepon;
     CheckBox check_tidak, check_flu, check_hamil;
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    SeekBar seekbar_kondisi;
+    TextView persentase;
 
     private static final String KEY_NIK = "nik";
     private static final String KEY_NAMA = "nama";
     private static final String KEY_TELEPON = "telepon";
     private static final String KEY_JENKEL = "jenkel";
     private static final String KEY_KONDISI = "kondisi";
+    private static final String KEY_PERSENTASE = "persentase";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,22 @@ public class MainActivity extends AppCompatActivity {
         check_tidak = findViewById(R.id.check_tidak);
         check_flu = findViewById(R.id.check_flu);
         check_hamil = findViewById(R.id.check_hamil);
+        seekbar_kondisi = findViewById(R.id.seekbar_kondisi);
+        persentase = findViewById(R.id.persentase);
+        seekbar_kondisi.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                persentase.setText(progress + ("%"));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
         button_daftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putString(KEY_TELEPON, input_telepon.getText().toString());
                 bundle.putString(KEY_JENKEL, radioButton.getText().toString());
                 bundle.putString(KEY_KONDISI, m);
+                bundle.putString(KEY_PERSENTASE, persentase.getText().toString());
 
                 dialogFragment.setArguments(bundle);
                 dialogFragment.show((MainActivity.this).getSupportFragmentManager(),"Image Dialog");

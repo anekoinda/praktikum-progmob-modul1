@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class dialog extends DialogFragment {
-    TextView txt_nik, txt_nama, txt_telepon, txt_jenkel, txt_kondisi;
+    TextView txt_nik, txt_nama, txt_telepon, txt_jenkel, txt_kondisi, txt_persentase;
     private static final String KEY_NIK = "nik";
     private static final String KEY_NAMA = "nama";
     private static final String KEY_TELEPON = "telepon";
     private static final String KEY_JENKEL = "jenkel";
     private static final String KEY_KONDISI = "kondisi";
+    private static final String KEY_PERSENTASE = "persentase";
 
     @Override
     public android.app.Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class dialog extends DialogFragment {
         txt_telepon = v.findViewById(R.id.txt_telepon);
         txt_jenkel = v.findViewById(R.id.txt_jenkel);
         txt_kondisi = v.findViewById(R.id.txt_kondisi);
+        txt_persentase = v.findViewById(R.id.txt_persentase);
 
         Bundle bundle = getArguments();
         String nik = bundle.getString(KEY_NIK, null);
@@ -36,12 +38,14 @@ public class dialog extends DialogFragment {
         String telepon = bundle.getString(KEY_TELEPON, null);
         String jenkel = bundle.getString(KEY_JENKEL, null);
         String kondisi = bundle.getString(KEY_KONDISI, null);
+        String persentase = bundle.getString(KEY_PERSENTASE, null);
 
         txt_nik.setText(nik);
         txt_nama.setText(nama);
         txt_telepon.setText(telepon);
         txt_jenkel.setText(jenkel);
         txt_kondisi.setText(kondisi);
+        txt_persentase.setText(persentase);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(v);
