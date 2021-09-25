@@ -9,51 +9,31 @@
     android:layout_marginLeft="16dp"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".ResumeData">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/check" />
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="start"
+        android:src="@drawable/data">
+    </ImageView>
 
     <TextView
-        android:layout_gravity="center"
+        android:layout_gravity="left"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Selamat!"
+        android:text="Data Vaksinasi Anda"
         android:textColor="@color/blackfont"
         android:fontFamily="@font/poppins_medium"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@color/greyfont"
-        android:text="Data pendaftaran Anda sudah berhasil dikirimkan, dan Anda akan melaksanakan vaksin dengan data berikut."
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <LinearLayout
         android:layout_marginTop="24dp"
@@ -327,17 +307,4 @@
             android:text="Nama Pendaftar"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_resume"
-        android:layout_width="match_parent"
-        android:layout_margin="16dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        style="@style/Widget.MaterialComponents.Button"
-        android:text="OK, lanjutkan"
-        android:onClick="goToAttract"
-        android:textColor="@color/white"/>
 </LinearLayout>

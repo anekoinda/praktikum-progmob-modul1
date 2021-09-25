@@ -1,6 +1,7 @@
 package id.anekoinda.vaksini;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -9,10 +10,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class dialog extends DialogFragment {
     TextView txt_nik, txt_nama, txt_telepon, txt_jenkel, txt_kondisi, txt_persentase;
+    Button btn_resume;
     private static final String KEY_NIK = "nik";
     private static final String KEY_NAMA = "nama";
     private static final String KEY_TELEPON = "telepon";
@@ -31,6 +34,7 @@ public class dialog extends DialogFragment {
         txt_jenkel = v.findViewById(R.id.txt_jenkel);
         txt_kondisi = v.findViewById(R.id.txt_kondisi);
         txt_persentase = v.findViewById(R.id.txt_persentase);
+        btn_resume = v.findViewById(R.id.btn_resume);
 
         Bundle bundle = getArguments();
         String nik = bundle.getString(KEY_NIK, null);
@@ -49,6 +53,24 @@ public class dialog extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(v);
+
+        btn_resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ResumeData.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putString(KEY_NIK, nik);
+                bundle.putString(KEY_NAMA, nama);
+                bundle.putString(KEY_TELEPON, telepon);
+                bundle.putString(KEY_JENKEL, jenkel);
+                bundle.putString(KEY_KONDISI, kondisi);
+                bundle.putString(KEY_PERSENTASE, persentase);
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         return builder.create();
     }
 }
